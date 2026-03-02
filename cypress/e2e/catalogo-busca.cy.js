@@ -1,0 +1,18 @@
+/// <reference types="cypress" />
+import catalogo from "../fixtures/livros.json"
+
+beforeEach(() => {
+    cy.visit('catalog.html')
+});
+
+describe('Funcionalidade busca no catálogo', () => {
+    it('Deve fazer a busca do livro 1984 com sucesso', () => {
+        cy.get('#search-input').type('1984')
+        cy.get('.card-title').should('contain', '1984')
+    });
+
+    it('Deve fazer a busca de um livro de massa dados', () => {
+        cy.get('#search-input').type(catalogo[2].livro)
+        cy.get('.card-title').should('contain', catalogo[2].livro)
+    });
+});

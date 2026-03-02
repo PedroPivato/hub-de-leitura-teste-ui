@@ -1,7 +1,7 @@
 /// <reference types="cypress"/>
 import { faker } from '@faker-js/faker';
-const email = faker.internet.email()
 const nome = faker.person.fullName()
+const email = faker.internet.email()
 const senha = faker.internet.password()
 const telefone = faker.phone.number()
 
@@ -36,5 +36,16 @@ describe('Funcionalidade: Cadastro no Hub de Leitura usando Faker', () => {
         cy.url().should * ('include', 'dashboard')
         cy.get('#user-name').should('contain', nome)
 
+    });
+
+    it('Deve fazer cadastro com sucesso - Usando comando customizado', () => {
+        cy.preencherCadastro(
+            nome,
+            email,
+            telefone,
+            senha,
+            senha
+        )
+        cy.url().should('contain', 'dashboard.html')
     });
 });
