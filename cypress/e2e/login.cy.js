@@ -38,4 +38,14 @@ describe('Funcionalidade: login', () => {
     it('Deve fazer login com sucesso - Usando importação de massa de dados', () => {
         cy.login(user.email, user.senha)
     });
+
+    it.only('Deve fazer login com sucesso - Usando fixture', () => {
+        cy.fixture('usuario').then((user) => {
+            user.forEach((usuario) => {
+                cy.visit('login.html')
+                cy.login(usuario.email, usuario.senha)
+                cy.url().should('contain', 'dashboard.html')
+            });
+        })
+    });
 });
