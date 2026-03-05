@@ -11,6 +11,10 @@ beforeEach(() => {
     cadastroPage.visitarPaginaCadastro()
 });
 
+afterEach(() => {
+    cy.screenshot()
+});
+
 describe('Funcionalidade: Cadastro no Hub de Leitura', () => {
     it.skip('Deve fazer cadastro com sucesso', () => {
         cy.get('#name').type('Pedro Pivato')
@@ -54,12 +58,12 @@ describe('Funcionalidade: Cadastro no Hub de Leitura usando Faker', () => {
 
 describe('Funcionalidade: Cadastro com Page Objects', () => {
     it('Deve fazer cadastro com sucesso - usando Page Objects', () => {
-        cadastroPage.preencherCadastro( nome, email,telefone,senha,senha)
+        cadastroPage.preencherCadastro(nome, email, telefone, senha, senha)
         cy.url().should('contain', 'dashboard.html')
     });
 
     it.only('Deve validar mensagem ao tentar cadastrar sem preencher nome', () => {
-        cadastroPage.preencherCadastro( '', email,telefone,senha,senha)
+        cadastroPage.preencherCadastro('', email, telefone, senha, senha)
         cy.get('.invalid-feedback').should('contain', 'Nome deve ter pelo menos 2 caracteres')
     });
 });

@@ -5,7 +5,7 @@ beforeEach(() => {
 });
 
 describe('Funcionalidade: catálogo de livros', () => {
-    it.skip('Deve clicar no botão adicionar à cesta', () => {
+    it('Deve clicar no botão adicionar à cesta', () => {
         cy.get(':nth-child(1) > .card > .card-body > .mt-auto > .d-grid > .btn-primary').click()
         cy.get('#cart-count').should('contain', 1)
     });

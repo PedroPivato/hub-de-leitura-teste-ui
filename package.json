@@ -4,7 +4,8 @@
   "description": "Teste E2E do Hub de Leitura do curso de Engenheiro de Qualidade da EBAC",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npx cypress run --browser chrome",
+    "cy:report": "npx cypress run --browser chrome --record --key 1541beef-84bb-4bc6-bb06-4c80abe93244"
   },
   "keywords": [],
   "author": "",

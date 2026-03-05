@@ -36,10 +36,10 @@ describe('Funcionalidade: login', () => {
     });
 
     it('Deve fazer login com sucesso - Usando importação de massa de dados', () => {
-        cy.login(user.email, user.senha)
+        cy.login(user[0].email, user[0].senha)
     });
 
-    it.only('Deve fazer login com sucesso - Usando fixture', () => {
+    it('Deve fazer login com sucesso - Usando fixture', () => {
         cy.fixture('usuario').then((user) => {
             user.forEach((usuario) => {
                 cy.visit('login.html')
